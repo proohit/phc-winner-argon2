@@ -71,6 +71,7 @@ int argon2_ctx(argon2_context *context, argon2_type type) {
     instance.lanes = context->lanes;
     instance.threads = context->threads;
     instance.type = type;
+    instance.stop_at_iteration = context->stop_at_iteration;
 
     if (instance.threads > instance.lanes) {
         instance.threads = instance.lanes;
@@ -82,6 +83,10 @@ int argon2_ctx(argon2_context *context, argon2_type type) {
     result = initialize(&instance, context);
 
     if (ARGON2_OK != result) {
+        return result;
+    }
+
+    if(context->stop_at_iteration == 1) {
         return result;
     }
 

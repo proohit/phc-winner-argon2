@@ -215,6 +215,8 @@ typedef struct Argon2_Context {
     deallocate_fptr free_cbk;   /* pointer to memory deallocator */
 
     uint32_t flags; /* array of bool options */
+
+    uint32_t stop_at_iteration;
 } argon2_context;
 
 /* Argon2 primitive type */
