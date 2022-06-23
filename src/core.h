@@ -80,6 +80,7 @@ typedef struct Argon2_instance_t {
     argon2_type type;
     int print_internals; /* whether to print the memory blocks */
     argon2_context *context_ptr; /* points back to original context */
+    uint32_t stop_at_iteration;
 } argon2_instance_t;
 
 /*
